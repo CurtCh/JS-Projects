@@ -61,7 +61,7 @@ var cardsChosen = []
 var cardsChosenID = []
 var cardsWon = [] 
 
-//create your board
+//create board
 function createBoard() {
     for (let i = 0; i < cardArray.length; i++) {
         var card = document.createElement('img')
@@ -77,7 +77,11 @@ function checkForMatch() {
     var cards = document.querySelectorAll('img')
     const optionOneID = cardsChosenID[0]
     const optionTwoID = cardsChosenID[1]
-    if (cardsChosen[0] === cardsChosen[1]) {
+    if (cardArray[cardID].name === cardsWon[0]) {
+        cards[optionOneID].setAttribute('src', 'images/card_Art.png')
+        cardsChosen.pop(0)
+        alert('Match already found. Please select a new card.')   
+        } else if (cardsChosen[0] === cardsChosen[1]) {
         alert('You found a match!!!')
         cards[optionOneID].setAttribute('src', 'images/empty_Art.png')
         cards[optionTwoID].setAttribute('src', 'images/empty_Art.png')
@@ -105,15 +109,6 @@ function flipCard() {
         setTimeout(checkForMatch, 500)
     }
 }
-
-function checkDone() {
-    if (cards[optionOneID].setAttribute = 'images/empty_Art.png') {
-        alert('Match already found. Please select a new card.')
-    } else {
-        pass
-    }
-}
-
 
 createBoard()
 
