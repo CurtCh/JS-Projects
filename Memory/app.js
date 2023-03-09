@@ -77,14 +77,17 @@ function checkForMatch() {
     var cards = document.querySelectorAll('img')
     const optionOneID = cardsChosenID[0]
     const optionTwoID = cardsChosenID[1]
-    if (cardArray[cardID].name === cardsWon[0]) {
-        cards[optionOneID].setAttribute('src', 'images/card_Art.png')
-        cardsChosen.pop(0)
-        alert('Match already found. Please select a new card.')   
-        } else if (cardsChosen[0] === cardsChosen[1]) {
+
+    if(optionOneID == optionTwoID) {
+        cards[optionOneID].setAttribute('src', 'images/empty_Art.png')
+        cards[optionTwoID].setAttribute('src', 'images/empty_Art.png')
+        alert('You have clicked the same image!')
+    } else if (cardsChosen[0] === cardsChosen[1]) {
         alert('You found a match!!!')
         cards[optionOneID].setAttribute('src', 'images/empty_Art.png')
         cards[optionTwoID].setAttribute('src', 'images/empty_Art.png')
+        cards[optionOneID].removeEventListener('click', flipCard)
+        cards[optionTwoID].removeEventListener('click', flipCard)
         cardsWon.push(cardsChosen)
     } else {
         cards[optionOneID].setAttribute('src', 'images/card_Art.png')
